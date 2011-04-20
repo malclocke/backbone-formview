@@ -55,6 +55,13 @@ var FormView = Backbone.View.extend({
     return el;
   },
 
+  destroy: function() {
+    var el = this.make('input', {id: "submit", type: "button", value: "Delete"});
+    var model = this.model;
+    $(el).bind("click", function() {model.destroy()});
+    return el;
+  },
+
   bindElementToAttribute: function(el, name) {
     var model = this.model;
     $(el).bind("change", function() {model.attributes[name] = $(el).val()});
